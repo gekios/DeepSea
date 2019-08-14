@@ -448,7 +448,7 @@ class CephPGs(object):
             current = self.pg_states()
             if not current:
                 log.warning("PGs are not present")
-                return False
+                return True
             if len(current) == 1 and current[0]['name'] == 'active+clean':
                 log.warning("PGs are active+clean")
                 return True
