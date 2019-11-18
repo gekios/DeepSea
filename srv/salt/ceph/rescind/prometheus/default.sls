@@ -8,6 +8,11 @@ stop prometheus {{ grains['host'] }}:
     - name: prometheus
     - enable: False
 
+stop prometheus_exporter:
+  service.dead:
+    - name: prometheus-ceph_exporter
+    - enable: False
+
 {% if grains.get('os', '') == 'CentOS' %}
 install_prometheus_repo:
   pkgrepo.absent:

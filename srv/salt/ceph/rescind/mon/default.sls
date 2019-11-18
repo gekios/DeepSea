@@ -8,6 +8,11 @@ stop mon:
     - name: ceph-mon@{{ grains['host'] }}
     - enable: False
 
+stop mon.target:
+  service.dead:
+    - name: ceph-mon.target
+    - enable: False
+
 /var/lib/ceph/mon/{{ salt['pillar.get']('cluster') }}-{{ grains['host'] }}:
   file.absent
 

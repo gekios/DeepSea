@@ -14,6 +14,11 @@ stop mds:
     - name: ceph-mds@mds
     - enable: False
 
+stop mds.target:
+  service.dead:
+    - name: ceph-mds.target
+    - enable: False
+
 include:
 - .keyring
 {% endif %}

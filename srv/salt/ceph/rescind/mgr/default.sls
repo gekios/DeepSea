@@ -8,6 +8,11 @@ stop mgr {{ grains['host'] }}:
     - name: ceph-mgr@{{ grains['host'] }}
     - enable: False
 
+stop mgr.target:
+  service.dead:
+    - name: ceph-mgr.target
+    - enable: False
+
 include:
 - .keyring
 {% endif %}

@@ -4,6 +4,11 @@ storage nop:
 
 {% if 'storage' not in salt['pillar.get']('roles') %}
 
+stop osd.target:
+  service.dead:
+    - name: ceph-osd.target
+    - enable: False
+
 {% for id in salt['osd.list']() %}
 
 removing {{ id }}:
